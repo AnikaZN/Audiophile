@@ -1,4 +1,7 @@
-# Reference: https://www.codespeedy.com/get-voice-input-with-microphone-in-python-using-pyaudio-and-speechrecognition/
+'''
+References:
+https://www.codespeedy.com/get-voice-input-with-microphone-in-python-using-pyaudio-and-speechrecognition/
+'''
 
 import speech_recognition as sr
 
@@ -15,6 +18,8 @@ if __name__ == '__main__':
             # Optional line to help with background noise
             # r.adjust_for_ambient_noise(source)
             audio = r.listen(source)
+
         print("You said: ", r.recognize_google(audio))
+
     else:
         print("See you later!")
