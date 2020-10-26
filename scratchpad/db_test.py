@@ -9,9 +9,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 
-# Suppress ugly warning
-SQLALCHEMY_TRACK_MODIFICATIONS = True
-
 APP = Flask(__name__)
 APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 DB = SQLAlchemy(APP)
@@ -44,7 +41,7 @@ if __name__ == '__main__':
         print("You said: ", text)
 
         # Write audio to a WAV file
-        with open(f"clips/{text[:20]}.wav", "wb") as f:
+        with open(f"../clips/{text[:20]}.wav", "wb") as f:
             f.write(audio.get_wav_data())
 
         audio_file = f"clips/{text[:20]}.wav"
