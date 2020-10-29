@@ -5,24 +5,47 @@ from item import Item
 
 # Declare all the rooms
 room = {
-    'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+    'outside':  Room("Outside the House ",
+                     "You stand outside a simple, two-story house. Will you open the door?"),
 
     'foyer':    Room("--- Foyer",
-                     """Dim light filters in from the south. Dusty passages run north and east."""),
+                     """Your flashlight illuminates a staircase ahead of you, and rooms to either side."""),
 
-    'overlook': Room("--- Grand Overlook",
-                     """A steep cliff appears before you, falling into the darkness. Ahead to the north, a light flickers in the distance, but there is no way across the chasm."""),
+    'living': Room("--- Living Room",
+                     """You enter what appears to be the living room. Couches covered in plastic are pushed up against the walls and a fireplace sits under the stairs. Moonlight filters in through the window, enough to illuminate something off to your right, but you can't tell what it is."""),
 
-    'narrow':   Room("--- Narrow Passage",
-                     """The narrow passage bends here from west to north. The smell of gold permeates the air."""),
+    'piano':   Room("--- Piano Room",
+                     """You continue to your right and the floor beneath you shifts from wearing carpet to cracked tiles. A grand piano, covered in dust, takes up the entire space."""),
 
-    'treasure': Room("--- Treasure Chamber",
-                     """You've found the long-lost treasure chamber! Sadly, it has already been completely emptied by earlier adventurers. The only exit is to the south."""),
+    'living': Room("--- Living Room",
+                     """You enter what appears to be the living room. Couches covered in plastic are pushed up against the walls and a fireplace sits under the stairs. Moonlight filters in through the window, enough to illuminate something off to your right, but you can't tell what it is."""),
 
-    'sphinx':   Room("--- Sphinx Chamber",
-                     """Towering before you is a stunning sphinx. Its eyes glow as it looks down at you. There is no visible exit. In an impossibly deep voice, it utters, 'I have nothing for you. What do you bring me, Adventurer?'""")
+    'piano':   Room("--- Piano Room",
+                     """You continue to your right and the floor beneath you shifts from wearing carpet to cracked tiles. A grand piano, covered in dust, takes up the entire space."""),
 
+    'living': Room("--- Living Room",
+                     """You enter what appears to be the living room. Couches covered in plastic are pushed up against the walls and a fireplace sits under the stairs. Moonlight filters in through the window, enough to illuminate something off to your right, but you can't tell what it is."""),
+
+    'piano':   Room("--- Piano Room",
+                     """You continue to your right and the floor beneath you shifts from wearing carpet to cracked tiles. A grand piano, covered in dust, takes up the entire space."""),
+
+    'living': Room("--- Living Room",
+                     """You enter what appears to be the living room. Couches covered in plastic are pushed up against the walls and a fireplace sits under the stairs. Moonlight filters in through the window, enough to illuminate something off to your right, but you can't tell what it is."""),
+
+    'piano':   Room("--- Piano Room",
+                     """You continue to your right and the floor beneath you shifts from wearing carpet to cracked tiles. A grand piano, covered in dust, takes up the entire space."""),
+
+    'living': Room("--- Living Room",
+                     """You enter what appears to be the living room. Couches covered in plastic are pushed up against the walls and a fireplace sits under the stairs. Moonlight filters in through the window, enough to illuminate something off to your right, but you can't tell what it is."""),
+
+    'piano':   Room("--- Piano Room",
+                     """You continue to your right and the floor beneath you shifts from wearing carpet to cracked tiles. A grand piano, covered in dust, takes up the entire space."""),
+
+    'living': Room("--- Living Room",
+                     """You enter what appears to be the living room. Couches covered in plastic are pushed up against the walls and a fireplace sits under the stairs. Moonlight filters in through the window, enough to illuminate something off to your right, but you can't tell what it is."""),
+
+    'piano':   Room("--- Piano Room",
+                     """You continue to your right and the floor beneath you shifts from wearing carpet to cracked tiles. A grand piano, covered in dust, takes up the entire space."""),
 }
 
 # Put items in rooms
