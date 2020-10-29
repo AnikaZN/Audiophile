@@ -71,6 +71,20 @@ room = {
 
 # Put items in rooms
 room['outside'].add_item('pebble')
+room['living'].add_item('collar')
+room['piano'].add_item('knife')
+room['dining'].add_item('plate')
+room['kitchen'].add_item('bread')
+room['nursery'].add_item('teddy')
+room['vacant'].add_item('concrete')
+room['laundry'].add_item('key')
+room['bedroom'].add_item('journal')
+room['bath'].add_item('goblet')
+room['pbath'].add_item('bird')
+room['primary'].add_item('brooch')
+room['closet'].add_item('hanger')
+room['secret'].add_item('photo')
+room['linen'].add_item('towel')
 
 # Link rooms together
 room['outside'].n_to = room['foyer']
@@ -254,7 +268,7 @@ def gameplay(player):
 
 
     elif direction == 'q':
-        print('--- Farewell, adventurer!')
+        print('--- Farewell!')
 
     else:
         print('---There seems to have been an error. Please try again.')
