@@ -6,7 +6,7 @@ from item import Item
 # Declare all the rooms
 room = {
     'outside':  Room("Outside the House",
-                     "You stand outside a simple, two-story house. Will you open the door?"),
+                     """You stand outside a simple, two-story house. Will you open the door?"""),
 
     'foyer':    Room("--- Foyer",
                      """Softly illuminated ahead of you is a staircase, and there are rooms to either side."""),
@@ -57,7 +57,7 @@ room = {
                      """Empty hangers and a single pair of red heels sit neatly in the closet. It is smaller than you would have expected."""),
 
     'secret':   Room("--- Hidden Room",
-                     """You squeeze through the small opening and find yourself in a room, several times larger than the closet. This room is bright, and it takes your eyes a moment to adjust. When they do, you realize what you are looking at - a full sekeleton, slumped against the wall. The panel clicks into place behind you."""),
+                     """You squeeze through the small opening and find yourself in a room, several times larger than the closet. This room is bright, and it takes your eyes a moment to adjust. When they do, you realize what you are looking at - a full skeleton, slumped against the wall. Its hand is wrapped around something, but you only just have time to notice this before there is a noise from behind you. The panel whirs and clicks into place behind you. The surface is smooth except for a keyhole in the center."""),
 
     'pbath':    Room("--- Primary Bathroom",
                      """You push the door open and the smell intensifies. If not for that, though, this is a perfectly normal bathroom, also pristine."""),
@@ -151,6 +151,11 @@ def item(player, item):
         gameplay(player)
 
 def gameplay(player):
+    if player.current_room.name == "--- Hidden Room" and "key" not in player.inventory:
+        print('--- You search and search, but there is nothing in this room to save you. The light, once bright, gradually goes dim, and after some amount of time you cannot comprehend, you sit opposite the skeleton, close your eyes, and succumb to sleep.')
+        print('GAME OVER')
+        exit()
+
     direction = input('What would you like to do? (N to go north, S to go south, E to go east, W to go west, I to investigate the room, IN to interact with your inventory, Q to quit) ')
     direction = direction.lower()
 
@@ -216,45 +221,27 @@ def gameplay(player):
                     print('--- There seems to have been an error. Please try again.')
                     gameplay(player)
             elif action == 'use':
-                if thing == "rope":
-                    if player.current_room.name == "--- Grand Overlook":
-                        print('--- Success! You fashion a swing and lauch yourself across the chasm, landing safely on the other side.')
-                        player.current_room = room['sphinx']
+                if thing == "hanger":
+                    if player.current_room.name == "--- Closet":
+                        print('--- Unsure what is prompting you to do so, you run your hanger along the back wall of the closet. You have almost finished this odd scrape when it gets stuck - lodged into something. You wedge, twist, and tug, then with a sudden whoosh of machinery, a panel opens up in the wall. A bright light leaks through the hole that is now there.')
+                        player.inventory.remove(thing)
+                        player.current_room.add_item(thing)
+                        player.current_room = room['secret']
                         print(player.room_info())
                         gameplay(player)
                     else:
                         print(f'The {thing} does not do anything here.')
                         gameplay(player)
-                elif thing == "sword":
-                    if player.current_room.name == "--- Sphinx Chamber":
-                        print('--- You draw your sword and manage to slay the sphinx with one quick slash.')
-                        print('--- You leave the cave dirty and tired, but alive.')
-                        print('--- Thanks for playing!')
-                    else:
-                        print(f'--- The {thing} does not do anything here.')
-                        gameplay(player)
-                elif thing == "coin":
-                    if player.current_room.name == "--- Sphinx Chamber":
-                        print('--- The sphinx contemplates your offering for a moment, then chuckles. "Congratulations, Adventurer." It gets to its feet and steps to the right, revealing a massive pile of treasure.')
-                        print('--- You leave the cave richer than when you started, and solved the mystery of the long-lost treasure. Congratulations!')
-                        print('--- Thanks for playing!')
-                    else:
-                        print(f'--- The {thing} does not do anything here.')
-                        gameplay(player)
                 elif thing == "key":
-                    if player.current_room.name == "--- Sphinx Chamber":
-                        print('--- The sphinx seems to smile as it silently stands and steps to the left, revealing a door. "You are truly worthy," it says. You step forward, unlock the door, and see a shimmering fountain.')
-                        print('--- Congratulations, you have discovered the Fountain of Youth! You now have the ability to live forever.')
-                        print('--- Thanks for playing!')
-                    else:
-                        print(f'--- The {thing} does not do anything here.')
+                    if player.current_room.name == "--- Hidden Room":
+                        print('--- Through the fog of panic, you remember the key in your pocket. You pull it out, hands trembling, and shove it into a hole on the center of the panel. The door slides open again, and you scramble out, your chest tight.')
+                        player.inventory.remove(thing)
+                        player.current_room.add_item(thing)
+                        player.current_room = room['closet']
+                        print(player.room_info())
                         gameplay(player)
-                elif thing == "pebble":
-                    if player.current_room.name == "--- Sphinx Chamber":
-                        print('--- The laughter of the sphinx is the last thing you hear. It snaps you up in one bite.')
-                        print('--- Oh no, you died! Please try again.')
                     else:
-                        print(f'--- The {thing} does not do anything here.')
+                        print(f'The {thing} does not do anything here.')
                         gameplay(player)
                 else:
                     print(f'--- The {thing} does not do anything here.')
