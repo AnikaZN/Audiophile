@@ -2,8 +2,8 @@ from room import Room
 from player import Player
 from item import Item
 import random
-from playsound import playsound
-
+import os
+import pygame
 
 # Declare all the rooms
 room = {
@@ -134,12 +134,18 @@ ghost_rooms = ['living', 'piano', 'dining', 'kitchen', 'nursery', 'laundry',
                'linen']
 
 # Main
+pygame.init()
+pygame.mixer.music.load('../sound_effects/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
+pygame.mixer.music.play()
 name = input('What is your name? ')
 
 player = Player(name, room['outside'])
 ghost = Player('Ghost', room[random.choice(ghost_rooms)])
 
 print(f'--- Welcome, {player.name}! Your current location is: {player.room_info()}')
+
+def clear():
+    os.system( 'cls' )
 
 def item(player, item):
     interact = input('What would you like to do? (HINT: You may "take" or "ignore" an item.) ')
@@ -158,19 +164,8 @@ def item(player, item):
         gameplay(player, ghost)
 
 def gameplay(player, ghost):
+    clear()
     ghost_room = ghost.current_room
-
-    if ghost_room.n_to == player.current_room or ghost_room.s_to == player.current_room or ghost_room.w_to == player.current_room or ghost_room.e_to == player.current_room:
-        print("You feel a strange chill...")
-        print("Be cautious. Something is near.")
-    elif ghost_room == player.current_room and "crumpled photo" not in player.inventory:
-        print("You feel an intense cold, and your muscles lock into place. You hear a scream, feel a pain deep in your body as if you have been stabbed, and the world goes dark as you collapse to the floor.")
-        print("GAME OVER")
-        exit()
-    elif ghost_room == player.current_room and "crumpled photo" in player.inventory:
-        print("You feel an intense cold, and your muscles lock into place. The sound of a scream shreds through your ears, and then the room grows impossibly silent. You are still frozen in place, but feel the crumpled photo in your pocket shift. Before your eyes, it unfolds in midair, and suddenly the foggy silhouette of a man stands before you. His eyes are sad, but he is smiling just a bit. 'Thank you' - the words echo through your head. The ghost disappears. You crumple to the floor, and watch in awe as the room around you grows brighter, as though the sun has come up. The cold leaves your body, and you know, with absolute certainty, that all is well.")
-        print("CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME.")
-        exit()
 
     new_ghost_location = ghost_room.n_to
     if new_ghost_location != None:
@@ -187,10 +182,52 @@ def gameplay(player, ghost):
                 new_ghost_location = ghost_room.w_to
                 ghost = Player('Ghost', new_ghost_location)
 
+    if ghost_room.n_to == player.current_room or ghost_room.s_to == player.current_room or ghost_room.w_to == player.current_room or ghost_room.e_to == player.current_room:
+        pygame.mixer.music.load('../sound_effects/2020-06-25_-_Dark_Shadows_-_www.FesliyanStudios.com_David_Fesliyan.mp3')
+        pygame.mixer.music.play()
+        print("You feel a strange chill...")
+        print("Be cautious. Something is near.")
+    elif ghost_room == player.current_room and "crumpled photo" not in player.inventory:
+        pygame.mixer.music.load('../sound_effects/2020-02-16_-_Anxiety_-_David_Fesliyan.mp3')
+        pygame.mixer.music.play()
+        print("You feel an intense cold, and your muscles lock into place. You hear a scream, feel a pain deep in your body as if you have been stabbed, and the world goes dark as you collapse to the floor.")
+        print("GAME OVER")
+        replay = input('Would you like to start over? Y or N ')
+        if replay.lower() == "y":
+            player = Player(name, room['outside'])
+            ghost = Player('Ghost', room[random.choice(ghost_rooms)])
+            pygame.mixer.music.load('../sound_effects/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
+            pygame.mixer.music.play()
+            print(f'--- Welcome, {player.name}! Your current location is: {player.room_info()}')
+            gameplay(player, ghost)
+        elif replay.lower() == "n":
+            exit()
+    elif ghost_room == player.current_room and "crumpled photo" in player.inventory:
+        pygame.mixer.music.load('../sound_effects/2018-07-02_-_Tears_of_Joy_-_David_Fesliyan.mp3')
+        pygame.mixer.music.play()
+        print("You feel an intense cold, and your muscles lock into place. The sound of a scream shreds through your ears, and then the room grows impossibly silent. You are still frozen in place, but feel the crumpled photo in your pocket shift. Before your eyes, it unfolds in midair, and suddenly the foggy silhouette of a man stands before you. His eyes are sad, but he is smiling just a bit. 'Thank you' - the words echo through your head. The ghost disappears. You crumple to the floor, and watch in awe as the room around you grows brighter, as though the sun has come up. The cold leaves your body, and you know, with absolute certainty, that all is well.")
+        print("CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME.")
+        replay = input('Would you like to start over? Y or N ')
+        if replay.lower() == "y":
+            player = Player(name, room['outside'])
+            ghost = Player('Ghost', room[random.choice(ghost_rooms)])
+            print(f'--- Welcome, {player.name}! Your current location is: {player.room_info()}')
+            gameplay(player, ghost)
+        elif replay.lower() == "n":
+            exit()
     if player.current_room.name == "--- Hidden Room" and "key" not in player.inventory:
+        pygame.mixer.music.load('../sound_effects/2020-02-16_-_Anxiety_-_David_Fesliyan.mp3')
+        pygame.mixer.music.play()
         print('--- You search and search, but there is nothing in this room to save you. The light, once bright, gradually goes dim, and after some amount of time you cannot comprehend, you sit opposite the skeleton, close your eyes, and succumb to sleep.')
         print('GAME OVER')
-        exit()
+        replay = input('Would you like to start over? Y or N ')
+        if replay.lower() == "y":
+            player = Player(name, room['outside'])
+            ghost = Player('Ghost', room[random.choice(ghost_rooms)])
+            print(f'--- Welcome, {player.name}! Your current location is: {player.room_info()}')
+            gameplay(player, ghost)
+        elif replay.lower() == "n":
+            exit()
 
     direction = input('What would you like to do? (N to go north, S to go south, E to go east, W to go west, I to investigate the room, IN to interact with your inventory, H for a hint, Q to quit) ')
     direction = direction.lower()

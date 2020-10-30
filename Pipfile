@@ -12,6 +12,7 @@ pandas = "*"
 flask = "*"
 flask-sqlalchemy = "*"
 playsound = "*"
+pygame = "*"
 
 [requires]
 python_version = "3.7"
