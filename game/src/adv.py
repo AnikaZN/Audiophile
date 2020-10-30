@@ -71,20 +71,20 @@ room = {
 
 # Put items in rooms
 room['outside'].add_item('pebble')
-room['living'].add_item('collar')
+room['living'].add_item('dog collar')
 room['piano'].add_item('knife')
-room['dining'].add_item('plate')
-room['kitchen'].add_item('bread')
-room['nursery'].add_item('teddy')
-room['vacant'].add_item('concrete')
+room['dining'].add_item('broken chair leg')
+room['kitchen'].add_item('moldy bread')
+room['nursery'].add_item('teddy bear')
+room['vacant'].add_item('chunk of concrete')
 room['laundry'].add_item('key')
 room['bedroom'].add_item('journal')
-room['bath'].add_item('goblet')
-room['pbath'].add_item('bird')
+room['bath'].add_item('crystal goblet')
+room['pbath'].add_item('dead bird')
 room['primary'].add_item('brooch')
 room['closet'].add_item('hanger')
-room['secret'].add_item('photo')
-room['linen'].add_item('towel')
+room['secret'].add_item('crumpled photo')
+room['linen'].add_item('damp towel')
 
 # Link rooms together
 room['outside'].n_to = room['foyer']
@@ -210,7 +210,7 @@ def gameplay(player):
             print(f'--- You currently have {player.inventory} in your inventory.')
             command = input('You can "drop" an item or "use" an item. Please name the item. (Example: "use pebble") ')
             command = command.lower()
-            action, thing = command.split(' ')[0], command.split(' ')[1]
+            action, thing = command.split(' ')[0], ' '.join(command.split(' ')[1:])
             if action == 'drop':
                 if thing in player.inventory:
                     player.inventory.remove(thing)
