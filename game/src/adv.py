@@ -121,6 +121,7 @@ room['primary'].s_to = room['stairs']
 room['closet'].e_to = room['primary']
 room['closet'].w_to = room['secret']
 room['secret'].e_to = room['closet']
+room['pbath'].w_to = room['primary']
 room['ehall'].e_to = room['ehall2']
 room['ehall'].s_to = room['bedroom']
 room['ehall'].w_to = room['stairs']
@@ -222,7 +223,7 @@ def gameplay(player, ghost):
         print('GAME OVER')
         replay = input('Would you like to start over? Y or N ')
         if replay.lower() == "y":
-            player = Player(name, room['outside'])
+            player = Player(name, room['outside'], [])
             ghost = Player('Ghost', room[random.choice(ghost_rooms)])
             print(f'--- Welcome, {player.name}! Your current location is: {player.room_info()}')
             gameplay(player, ghost)
