@@ -30,7 +30,7 @@ class Audio(DB.Model):
     def __repr__(self):
         return f'The file located at {self.file_loc} says the following: {self.full_text}'
 
-if __name__ == '__main__':
+def record():
     signal = input('Are you ready? "y" for yes, "n" for no! (If you say yes, be ready to start talking!) ')
 
     if signal == "y":
@@ -41,7 +41,7 @@ if __name__ == '__main__':
         print("You said: ", text)
 
         # Write audio to a WAV file
-        with open(f"../clips/{text[:20]}.wav", "wb") as f:
+        with open(f"./clips/{text[:20]}.wav", "wb") as f:
             f.write(audio.get_wav_data())
 
         audio_file = f"clips/{text[:20]}.wav"
@@ -57,3 +57,6 @@ if __name__ == '__main__':
 
     else:
         print("See you later!")
+
+if __name__ == '__main__':
+    record()
