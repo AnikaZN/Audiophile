@@ -1,3 +1,8 @@
+"""
+Sources:
+https://www.fesliyanstudios.com/
+"""
+
 from room import Room
 from player import Player
 from item import Item
