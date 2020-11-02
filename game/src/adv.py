@@ -139,19 +139,19 @@ ghost_rooms = ['living', 'piano', 'dining', 'kitchen', 'nursery', 'laundry',
                'bedroom', 'bath', 'pbath', 'primary', 'closet', 'vacant',
                'linen']
 
-# Main
-pygame.init()
-pygame.mixer.music.load('../sound_effects/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
-pygame.mixer.music.play()
-name = input('What is your name? ')
+# # Main
+# pygame.init()
+# pygame.mixer.music.load('../sound_effects/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
+# pygame.mixer.music.play()
+# name = input('What is your name? ')
+#
+# player = Player(name, room['outside'])
+# ghost = Player('Ghost', room[random.choice(ghost_rooms)])
+#
+# print(f'--- Welcome, {player.name}! Your current location is: {player.room_info()}')
 
-player = Player(name, room['outside'])
-ghost = Player('Ghost', room[random.choice(ghost_rooms)])
-
-print(f'--- Welcome, {player.name}! Your current location is: {player.room_info()}')
-
-def clear():
-    os.system( 'cls' )
+# def clear():
+#     os.system( 'cls' )
 
 def item(player, item):
     interact = input('What would you like to do? (HINT: You may "take" or "ignore" an item.) ')
@@ -169,8 +169,8 @@ def item(player, item):
         print('--- There seems to have been an error. Please try again.')
         gameplay(player, ghost)
 
-def gameplay(player, ghost):
-    clear()
+def gameplay(player, ghost, direction):
+    #clear()
     ghost_room = ghost.current_room
 
     new_ghost_location = ghost_room.n_to
@@ -215,9 +215,9 @@ def gameplay(player, ghost):
         print("CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME.")
         replay = input('Would you like to start over? Y or N ')
         if replay.lower() == "y":
-            player = Player(name, room['outside'])
+            player = Player( room['outside'])
             ghost = Player('Ghost', room[random.choice(ghost_rooms)])
-            print(f'--- Welcome, {player.name}! Your current location is: {player.room_info()}')
+            print(f'--- Welcome! Your current location is: {player.room_info()}')
             gameplay(player, ghost)
         elif replay.lower() == "n":
             exit()
@@ -228,20 +228,20 @@ def gameplay(player, ghost):
         print('GAME OVER')
         replay = input('Would you like to start over? Y or N ')
         if replay.lower() == "y":
-            player = Player(name, room['outside'], [])
+            player = Player(room['outside'], [])
             ghost = Player('Ghost', room[random.choice(ghost_rooms)])
-            print(f'--- Welcome, {player.name}! Your current location is: {player.room_info()}')
+            print(f'--- Welcome! Your current location is: {player.room_info()}')
             gameplay(player, ghost)
         elif replay.lower() == "n":
             exit()
 
-    direction = input('What would you like to do? (N to go north, S to go south, E to go east, W to go west, I to investigate the room, IN to interact with your inventory, H for a hint, Q to quit) ')
-    direction = direction.lower()
+    # direction = input('What would you like to do? (N to go north, S to go south, E to go east, W to go west, I to investigate the room, IN to interact with your inventory, H for a hint, Q to quit) ')
+    # direction = direction.lower()
 
     if direction == 'n':
         location = player.current_room.n_to
         if location != None:
-            player = Player(name, location)
+            player = Player(location)
             print(player.room_info())
             gameplay(player, ghost)
         else:
@@ -250,7 +250,7 @@ def gameplay(player, ghost):
     elif direction == 's':
         location = player.current_room.s_to
         if location != None:
-            player = Player(name, location)
+            player = Player(location)
             print(player.room_info())
             gameplay(player, ghost)
         else:
@@ -259,7 +259,7 @@ def gameplay(player, ghost):
     elif direction == 'e':
         location = player.current_room.e_to
         if location != None:
-            player = Player(name, location)
+            player = Player(location)
             print(player.room_info())
             gameplay(player, ghost)
         else:
@@ -268,7 +268,7 @@ def gameplay(player, ghost):
     elif direction == 'w':
         location = player.current_room.w_to
         if location != None:
-            player = Player(name, location)
+            player = Player(location)
             print(player.room_info())
             gameplay(player, ghost)
         else:
