@@ -199,47 +199,43 @@ def gameplay(player, ghost, direction=None):
     if ghost_room.n_to == player.current_room or ghost_room.s_to == player.current_room or ghost_room.w_to == player.current_room or ghost_room.e_to == player.current_room:
         pygame.mixer.music.load('../sound_effects/2020-06-25_-_Dark_Shadows_-_www.FesliyanStudios.com_David_Fesliyan.mp3')
         pygame.mixer.music.play()
-        print("You feel a strange chill...")
-        print("Be cautious. Something is near.")
+        return "You feel a strange chill... Be cautious. Something is near."
     elif ghost_room == player.current_room and "crumpled photo" not in player.inventory:
         pygame.mixer.music.load('../sound_effects/2020-02-16_-_Anxiety_-_David_Fesliyan.mp3')
         pygame.mixer.music.play()
-        print("You feel an intense cold, and your muscles lock into place. You hear a scream, feel a pain deep in your body as if you have been stabbed, and the world goes dark as you collapse to the floor.")
-        print("GAME OVER")
+        return "You feel an intense cold, and your muscles lock into place. You hear a scream, feel a pain deep in your body as if you have been stabbed, and the world goes dark as you collapse to the floor. GAME OVER"
         replay = input('Would you like to start over? Y or N ')
         if replay.lower() == "y":
             player = Player(name, room['outside'])
             ghost = Player(room[random.choice(ghost_rooms)])
             pygame.mixer.music.load('../sound_effects/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
             pygame.mixer.music.play()
-            print(f'Welcome! Your current location is: {player.room_info()}')
-            return gameplay(player, ghost)
+            welcome = (f'Welcome! Your current location is: {player.room_info()}')
+            return welcome, gameplay(player, ghost)
         elif replay.lower() == "n":
             exit()
     elif ghost_room == player.current_room and "crumpled photo" in player.inventory:
         pygame.mixer.music.load('../sound_effects/2018-07-02_-_Tears_of_Joy_-_David_Fesliyan.mp3')
         pygame.mixer.music.play()
-        print("You feel an intense cold, and your muscles lock into place. The sound of a scream shreds through your ears, and then the room grows impossibly silent. You are still frozen in place, but feel the crumpled photo in your pocket shift. Before your eyes, it unfolds in midair, and suddenly the foggy silhouette of a man stands before you. His eyes are sad, but he is smiling just a bit. 'Thank you' - the words echo through your head. The ghost disappears. You crumple to the floor, and watch in awe as the room around you grows brighter, as though the sun has come up. The cold leaves your body, and you know, with absolute certainty, that all is well.")
-        print("CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME.")
+        return "You feel an intense cold, and your muscles lock into place. The sound of a scream shreds through your ears, and then the room grows impossibly silent. You are still frozen in place, but feel the crumpled photo in your pocket shift. Before your eyes, it unfolds in midair, and suddenly the foggy silhouette of a man stands before you. His eyes are sad, but he is smiling just a bit. 'Thank you' - the words echo through your head. The ghost disappears. You crumple to the floor, and watch in awe as the room around you grows brighter, as though the sun has come up. The cold leaves your body, and you know, with absolute certainty, that all is well. CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME."
         replay = input('Would you like to start over? Y or N ')
         if replay.lower() == "y":
             player = Player(room['outside'])
             ghost = Player(room[random.choice(ghost_rooms)])
-            print(f'Welcome! Your current location is: {player.room_info()}')
-            return gameplay(player, ghost)
+            welcome = (f'Welcome! Your current location is: {player.room_info()}')
+            return welcome, gameplay(player, ghost)
         elif replay.lower() == "n":
             exit()
     if player.current_room.name == "Hidden Room" and "key" not in player.inventory:
         pygame.mixer.music.load('../sound_effects/2020-02-16_-_Anxiety_-_David_Fesliyan.mp3')
         pygame.mixer.music.play()
-        print('You search and search, but there is nothing in this room to save you. The light, once bright, gradually goes dim, and after some amount of time you cannot comprehend, you sit opposite the skeleton, close your eyes, and succumb to sleep.')
-        print('GAME OVER')
+        return 'You search and search, but there is nothing in this room to save you. The light, once bright, gradually goes dim, and after some amount of time you cannot comprehend, you sit opposite the skeleton, close your eyes, and succumb to sleep. GAME OVER'
         replay = input('Would you like to start over? Y or N ')
         if replay.lower() == "y":
             player = Player(room['outside'], [])
             ghost = Player(room[random.choice(ghost_rooms)])
-            print(f'Welcome! Your current location is: {player.room_info()}')
-            return gameplay(player, ghost)
+            welcome = (f'Welcome! Your current location is: {player.room_info()}')
+            return welcome, gameplay(player, ghost)
         elif replay.lower() == "n":
             exit()
 
@@ -253,103 +249,104 @@ def gameplay(player, ghost, direction=None):
             info = player.room_info()
             return info, gameplay(player, ghost)
         else:
-            print('There is nothing to the north. Please choose a different direction.')
-            return gameplay(player, ghost)
+            message = 'There is nothing to the north. Please choose a different direction.'
+            return message, gameplay(player, ghost)
     elif direction == 's':
         location = player.current_room.s_to
         if location != None:
             player = Player(location)
-            print(player.room_info())
-            return gameplay(player, ghost)
+            info = player.room_info()
+            return info, gameplay(player, ghost)
         else:
-            print('There is nothing to the south. Please choose a different direction.')
-            return gameplay(player, ghost)
+            message = 'There is nothing to the south. Please choose a different direction.'
+            return message, gameplay(player, ghost)
     elif direction == 'e':
         location = player.current_room.e_to
         if location != None:
             player = Player(location)
-            print(player.room_info())
-            return gameplay(player, ghost)
+            info = player.room_info()
+            return info, gameplay(player, ghost)
         else:
-            print('There is nothing to the east. Please choose a different direction.')
-            return gameplay(player, ghost)
+            message = 'There is nothing to the east. Please choose a different direction.'
+            return message, gameplay(player, ghost)
     elif direction == 'w':
         location = player.current_room.w_to
         if location != None:
             player = Player(location)
-            print(player.room_info())
-            return gameplay(player, ghost)
+            info = player.room_info()
+            return info, gameplay(player, ghost)
         else:
-            print('There is nothing to the west. Please choose a different direction.')
-            return gameplay(player, ghost)
+            message = 'There is nothing to the west. Please choose a different direction.'
+            return message, gameplay(player, ghost)
 
     elif direction == 'i':
-        print(player.investigate())
-        object = player.investigate()[14:-1]
+        invest = player.investigate()
+        object = invest[14:-1]
 
-        if player.investigate() != "There is nothing here.":
+        if invest != "There is nothing here.":
             item(player, object)
+            return invest
         else:
-            return gameplay(player, ghost)
+            return invest, gameplay(player, ghost)
 
-    elif direction == 'in':
-        if player.inventory != []:
-            print(f'You currently have {player.inventory} in your inventory.')
-            command = input('You can "drop" an item or "use" an item. Please name the item. (Example: "use pebble") ')
-            command = command.lower()
-            action, thing = command.split(' ')[0], ' '.join(command.split(' ')[1:])
-            if action == 'drop':
-                if thing in player.inventory:
-                    player.inventory.remove(thing)
-                    player.current_room.add_item(thing)
-                    print(f'You currently have {player.inventory} in your inventory.')
-                    return gameplay(player, ghost)
-                else:
-                    print('There seems to have been an error. Please try again.')
-                    return gameplay(player, ghost)
-            elif action == 'use':
-                if thing == "hanger":
-                    if player.current_room.name == "Closet":
-                        print('Unsure what is prompting you to do so, you run your hanger along the back wall of the closet. You have almost finished this odd scrape when it gets stuck - lodged into something. You wedge, twist, and tug, then with a sudden whoosh of machinery, a panel opens up in the wall. A bright light leaks through the hole that is now there.')
-                        player.inventory.remove(thing)
-                        player.current_room.add_item(thing)
-                        player.current_room = room['secret']
-                        print(player.room_info())
-                        return gameplay(player, ghost)
-                    else:
-                        print(f'The {thing} does not do anything here.')
-                        return gameplay(player, ghost)
-                elif thing == "key":
-                    if player.current_room.name == "Hidden Room":
-                        print('Through the fog of panic, you remember the key in your pocket. You pull it out, hands trembling, and shove it into a hole on the center of the panel. The door slides open again, and you scramble out, your chest tight.')
-                        player.inventory.remove(thing)
-                        player.current_room.add_item(thing)
-                        player.current_room = room['closet']
-                        print(player.room_info())
-                        return gameplay(player, ghost)
-                    else:
-                        print(f'The {thing} does not do anything here.')
-                        return gameplay(player, ghost)
-                else:
-                    print(f'The {thing} does not do anything here.')
-                    return gameplay(player, ghost)
-            else:
-                print('There seems to have been an error. Please try again.')
-                return gameplay(player, ghost)
-        else:
-            print('You have nothing in your inventory.')
-            return gameplay(player, ghost)
+    # elif direction == 'in':
+    #     if player.inventory != []:
+    #         print(f'You currently have {player.inventory} in your inventory.')
+    #         command = input('You can "drop" an item or "use" an item. Please name the item. (Example: "use pebble") ')
+    #         command = command.lower()
+    #         action, thing = command.split(' ')[0], ' '.join(command.split(' ')[1:])
+    #         if action == 'drop':
+    #             if thing in player.inventory:
+    #                 player.inventory.remove(thing)
+    #                 player.current_room.add_item(thing)
+    #                 print(f'You currently have {player.inventory} in your inventory.')
+    #                 return gameplay(player, ghost)
+    #             else:
+    #                 print('There seems to have been an error. Please try again.')
+    #                 return gameplay(player, ghost)
+    #         elif action == 'use':
+    #             if thing == "hanger":
+    #                 if player.current_room.name == "Closet":
+    #                     print('Unsure what is prompting you to do so, you run your hanger along the back wall of the closet. You have almost finished this odd scrape when it gets stuck - lodged into something. You wedge, twist, and tug, then with a sudden whoosh of machinery, a panel opens up in the wall. A bright light leaks through the hole that is now there.')
+    #                     player.inventory.remove(thing)
+    #                     player.current_room.add_item(thing)
+    #                     player.current_room = room['secret']
+    #                     print(player.room_info())
+    #                     return gameplay(player, ghost)
+    #                 else:
+    #                     print(f'The {thing} does not do anything here.')
+    #                     return gameplay(player, ghost)
+    #             elif thing == "key":
+    #                 if player.current_room.name == "Hidden Room":
+    #                     print('Through the fog of panic, you remember the key in your pocket. You pull it out, hands trembling, and shove it into a hole on the center of the panel. The door slides open again, and you scramble out, your chest tight.')
+    #                     player.inventory.remove(thing)
+    #                     player.current_room.add_item(thing)
+    #                     player.current_room = room['closet']
+    #                     print(player.room_info())
+    #                     return gameplay(player, ghost)
+    #                 else:
+    #                     print(f'The {thing} does not do anything here.')
+    #                     return gameplay(player, ghost)
+    #             else:
+    #                 print(f'The {thing} does not do anything here.')
+    #                 return gameplay(player, ghost)
+    #         else:
+    #             print('There seems to have been an error. Please try again.')
+    #             return gameplay(player, ghost)
+    #     else:
+    #         print('You have nothing in your inventory.')
+    #         return gameplay(player, ghost)
 
     elif direction == 'h':
-        print("HINT: Find the key, the hidden room, the photograph, and the ghost - in that order. Do not get caught by the ghost until you have found all three things.")
-        return gameplay(player, ghost)
+        hint = "HINT: Find the key, the hidden room, the photograph, and the ghost - in that order. Do not get caught by the ghost until you have found all three things."
+        return hint, gameplay(player, ghost)
 
     elif direction == 'q':
-        print('Farewell!')
+        return 'Farewell!'
 
     else:
-        print('There seems to have been an error. Please try again.')
-        return gameplay(player, ghost)
+        error = 'There seems to have been an error. Please try again.'
+        return error, gameplay(player, ghost)
 
 if __name__ == '__main__':
     gameplay(player, ghost)
