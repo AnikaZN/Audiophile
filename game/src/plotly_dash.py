@@ -126,9 +126,6 @@ def move(btn1, btn2, btn3, btn4):
         direction = 'e'
     elif 'south' in changed_id:
         direction = 's'
-    return direction
-
-def play(btn1, btn2, btn3, btn4):
     return gameplay(player, ghost, direction)
 
 if __name__ == '__main__':
