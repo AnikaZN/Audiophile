@@ -127,7 +127,7 @@ def move(btn1, btn2, btn3, btn4):
     elif 'south' in changed_id:
         direction = 's'
 
-    os.system('python adv2.py')
+    return os.system(f'python adv.py -d {direction}')
 
 
 if __name__ == '__main__':

@@ -169,6 +169,12 @@ def item(player, item):
         print('There seems to have been an error. Please try again.')
         return gameplay(player, ghost)
 
+# def commandLineSetup():
+#     commandParser = argparse.ArgumentParser(description="Takes in a player movement direction")
+#     commandParser.add_argument("-d", "--direction", help="Player momvement direction")
+#     args = commandParser.parse_args()
+#     return args.direction
+
 # def gameplay(player, ghost, direction):
 #     if direction == 'n':
 #         print('Something is happening!')
@@ -241,6 +247,7 @@ def gameplay(player, ghost, direction):
 
     # direction = input('What would you like to do? (N to go north, S to go south, E to go east, W to go west, I to investigate the room, IN to interact with your inventory, H for a hint, Q to quit) ')
     # direction = direction.lower()
+    # direction = commandLineSetup()
 
     if direction == 'n':
         location = player.current_room.n_to

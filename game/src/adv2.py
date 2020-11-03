@@ -4,6 +4,7 @@ from item import Item
 import random
 import os
 import pygame
+import argparse
 
 # Declare all the rooms
 room = {
@@ -161,6 +162,12 @@ def item(player, item):
     else:
         print('There seems to have been an error. Please try again.')
 
+def commandLineSetup():
+    commandParser = argparse.ArgumentParser(description="Takes in a player movement direction")
+    commandParser.add_argument("-d", "--direction", help="Player momvement direction")
+    args = commandParser.parse_args()
+    return args.direction
+
 while True:
     clear()
     ghost_room = ghost.current_room
@@ -229,6 +236,7 @@ while True:
 
     # direction = input('What would you like to do? (N to go north, S to go south, E to go east, W to go west, I to investigate the room, IN to interact with your inventory, H for a hint, Q to quit) ')
     # direction = direction.lower()
+    direction = commandLineSetup()
 
     if direction == 'n':
         location = player.current_room.n_to
