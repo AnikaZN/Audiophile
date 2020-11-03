@@ -130,7 +130,6 @@ def move(btn1, btn2, btn3, btn4):
 
     os.system(f'python adv2.py -d {direction}')
 
-
 if __name__ == '__main__':
     player = Player(room['outside'])
     ghost = Player(room[random.choice(ghost_rooms)])
