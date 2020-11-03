@@ -8,7 +8,7 @@ import dash_html_components as html
 from room import Room
 from player import Player
 from item import Item
-from adv import room, item, gameplay
+from adv import room, item
 
 # Put items in rooms
 room['outside'].add_item('pebble')
@@ -105,8 +105,8 @@ app.layout = html.Div([
 def start():
     # Main
     pygame.init()
-    pygame.mixer.music.load('../sound_effects/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
-    pygame.mixer.music.play()
+    # pygame.mixer.music.load('../sound_effects/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
+    # pygame.mixer.music.play()
 
     return(f'--- Welcome! Your current location is: {player.room_info()}')
 
@@ -126,11 +126,12 @@ def move(btn1, btn2, btn3, btn4):
         direction = 'e'
     elif 'south' in changed_id:
         direction = 's'
-    return gameplay(player, ghost, direction)
+
+    os.system('python adv2.py')
+
 
 if __name__ == '__main__':
     player = Player(room['outside'])
     ghost = Player(room[random.choice(ghost_rooms)])
     start()
     app.run_server(debug=True)
-    # os.system('python adv.py')
