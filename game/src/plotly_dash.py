@@ -114,7 +114,8 @@ def start():
               [Input('north', 'n_clicks'),
                Input('west', 'n_clicks'),
                Input('east', 'n_clicks'),
-               Input('south', 'n_clicks')])
+               Input('south', 'n_clicks')],
+               prevent_initial_call=True)
 
 def move(btn1, btn2, btn3, btn4):
     changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
@@ -127,11 +128,11 @@ def move(btn1, btn2, btn3, btn4):
     elif 'south' in changed_id:
         direction = 's'
 
-    return os.system(f'python adv.py -d {direction}')
+    os.system(f'python adv2.py -d {direction}')
 
 
 if __name__ == '__main__':
     player = Player(room['outside'])
     ghost = Player(room[random.choice(ghost_rooms)])
-    start()
+    print(start())
     app.run_server(debug=True)
