@@ -128,7 +128,7 @@ def move(btn1, btn2, btn3, btn4):
     elif 'south' in changed_id:
         direction = 's'
 
-    os.system(f'python adv2.py -d {direction}')
+    os.system(f'python adv.py -d {direction}')
 
 if __name__ == '__main__':
     player = Player(room['outside'])
