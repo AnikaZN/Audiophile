@@ -168,8 +168,6 @@ def commandLineSetup():
     args = commandParser.parse_args()
     return args.direction
 
-iter = 0
-
 while True:
     clear()
     ghost_room = ghost.current_room
