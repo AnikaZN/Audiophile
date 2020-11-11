@@ -15,6 +15,7 @@ playsound = "*"
 pygame = "*"
 dash = "*"
 pyinstaller = "*"
+pygame-gui = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "85f7d2dbb6a0abd254408f2e557b2d681508981c4c16859f5a5d9950853abab5"
+            "sha256": "b3e6d6c44c29daa31b711859cc9f563f77b7bacef9fbd905d90d028fb248c96e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -68,10 +68,10 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:5930595817496dd21bb8dc35dad090f1c2cd0adfaf21204bf6732ca5d8ee34d3",
-                "sha256:8fc0819f1f30ba15bdb34cceffb9ef04d99f420f68eb75d901e9560b8749fc41"
+                "sha256:1f422849db327d534e3d0c5f02a263458c3955ec0aae4ff09b95f195c59f4edd",
+                "sha256:f05def092c44fbf25834a51509ef6e631dc19765ab8a57b4e7ab85531f0a9cf4"
             ],
-            "version": "==2020.6.20"
+            "version": "==2020.11.8"
         },
         "chardet": {
             "hashes": [
@@ -134,9 +134,9 @@
         },
         "flask-compress": {
             "hashes": [
-                "sha256:965e832684160871b5268f97879c5e85a88569cc6e3e353a7779215664eefdad"
+                "sha256:c132590e7c948877a96d675c13cbfa64edec0faafa2381678dea6f36aa49a552"
             ],
-            "version": "==1.7.0"
+            "version": "==1.8.0"
         },
         "flask-sqlalchemy": {
             "hashes": [
@@ -368,6 +368,13 @@
             ],
             "index": "pypi",
             "version": "==2.0.0"
+        },
+        "pygame-gui": {
+            "hashes": [
+                "sha256:a699c6c5c3f080c37955a1f53bf4d4d8c48b77b49ae3fe5eec925f05b8c1145a"
+            ],
+            "index": "pypi",
+            "version": "==0.5.7"
         },
         "pyinstaller": {
             "hashes": [
