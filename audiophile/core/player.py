@@ -13,8 +13,8 @@ class Player():
         return f'{name} - {description}'
 
     def investigate(self):
-        items = self.current_room.items
-        if items != None:
-            return f'--- You see a {items}.'
+        item = self.current_room.items
+        if item != None:
+            return f'You see a {item}.'
         else:
-            return "--- There is nothing here."
+            return "There is nothing here."
