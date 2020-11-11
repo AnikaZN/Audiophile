@@ -5,7 +5,7 @@ import pygame
 from pygame.locals import *
 import pygame_gui
 
-from core.room import Room
+from core.player import Player
 
 # from core.functions import show_inventory, try_scene_change, examine_object
 # from core.functions import take_object, activate_object, combine_objects
@@ -16,24 +16,6 @@ from core.room import Room
 # import scenes.scene_two as s2
 # import scenes.scene_three as s3
 # import scenes.scene_four as s4
-
-class Player():
-    def __init__(self, current_room, inventory = []):
-        # self.name = name
-        self.current_room = current_room
-        self.inventory = inventory
-
-    def room_info(self):
-        name = self.current_room.name
-        description = self.current_room.description
-        return f'{name} - {description}'
-
-    def investigate(self):
-        item = self.current_room.items
-        if items != None:
-            return f'--- You see a {item}.'
-        else:
-            return "--- There is nothing here."
 
 # Declare all the rooms
 room = {
