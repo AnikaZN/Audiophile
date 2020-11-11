@@ -1,0 +1,24 @@
+Credit to: https://github.com/MyreMylar/christmas_adventure
+
+core/__init__.py: Blank
+core/core_strings: Not needed
+core/functions: functionize movement and inventory interaction, that goes here
+core/setup.py: start() function goes here and all relevant starting info
+core/snow.py: Not needed
+core/snowflake.py: Not needed
+
+data/AGENCYB.TTF: ???
+data/AGENCYR.TTF: ???
+data/Gabriola.TTF: ??? - maybe a font?
+ui_theme.json: Design elements
+
+scenes/__init__.py: Blank
+scenes/city_background.png: Background image for GUI
+scenes/scene.py:  GameObject and Scene class (GameObject might be useful, Scene == Room)
+scenes/scene_four.py: SceneFour - child class of Scene - take note of HTML details for description of scene
+scenes/scene_one.py: Simliar to scene_four, but has DroneObject class - child class of GameObject
+scenes/scene_three.py: Probably nothing noteworthy here
+scenes/scene_two.py: Lots of objects, nothing else noteworthy
+scenes/server_room.png: Different background image, cool idea
+
+christmas_adventure.py: Calls on all existing things, implements pygame features, does text processing
