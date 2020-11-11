@@ -273,11 +273,13 @@ def gameplay(player, ghost, direction):
     if ghost_room.n_to == player.current_room or ghost_room.s_to == player.current_room or ghost_room.w_to == player.current_room or ghost_room.e_to == player.current_room:
         # pygame.mixer.music.load('../sound_effects/2020-06-25_-_Dark_Shadows_-_www.FesliyanStudios.com_David_Fesliyan.mp3')
         # pygame.mixer.music.play()
-        return "You feel a strange chill... Be cautious. Something is near."
+        message = "You feel a strange chill... Be cautious. Something is near."
+        return message, player, ghost
     elif ghost_room == player.current_room and "crumpled photo" not in player.inventory:
         # pygame.mixer.music.load('../sound_effects/2020-02-16_-_Anxiety_-_David_Fesliyan.mp3')
         # pygame.mixer.music.play()
-        return "You feel an intense cold, and your muscles lock into place. You hear a scream, feel a pain deep in your body as if you have been stabbed, and the world goes dark as you collapse to the floor. GAME OVER"
+        message = "You feel an intense cold, and your muscles lock into place. You hear a scream, feel a pain deep in your body as if you have been stabbed, and the world goes dark as you collapse to the floor. GAME OVER"
+        running = False
         # replay = input('Would you like to start over? Y or N ')
         # if replay.lower() == "y":
         #     player = Player(room['outside'])
@@ -291,7 +293,8 @@ def gameplay(player, ghost, direction):
     elif ghost_room == player.current_room and "crumpled photo" in player.inventory:
         # pygame.mixer.music.load('../sound_effects/2018-07-02_-_Tears_of_Joy_-_David_Fesliyan.mp3')
         # pygame.mixer.music.play()
-        return "You feel an intense cold, and your muscles lock into place. The sound of a scream shreds through your ears, and then the room grows impossibly silent. You are still frozen in place, but feel the crumpled photo in your pocket shift. Before your eyes, it unfolds in midair, and suddenly the foggy silhouette of a man stands before you. His eyes are sad, but he is smiling just a bit. 'Thank you' - the words echo through your head. The ghost disappears. You crumple to the floor, and watch in awe as the room around you grows brighter, as though the sun has come up. The cold leaves your body, and you know, with absolute certainty, that all is well. CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME."
+        message = "You feel an intense cold, and your muscles lock into place. The sound of a scream shreds through your ears, and then the room grows impossibly silent. You are still frozen in place, but feel the crumpled photo in your pocket shift. Before your eyes, it unfolds in midair, and suddenly the foggy silhouette of a man stands before you. His eyes are sad, but he is smiling just a bit. 'Thank you' - the words echo through your head. The ghost disappears. You crumple to the floor, and watch in awe as the room around you grows brighter, as though the sun has come up. The cold leaves your body, and you know, with absolute certainty, that all is well. CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME."
+        running = False
         # replay = input('Would you like to start over? Y or N ')
         # if replay.lower() == "y":
         #     player = Player(room['outside'])
@@ -303,7 +306,8 @@ def gameplay(player, ghost, direction):
     if player.current_room.name == "Hidden Room" and "key" not in player.inventory:
         # pygame.mixer.music.load('../sound_effects/2020-02-16_-_Anxiety_-_David_Fesliyan.mp3')
         # pygame.mixer.music.play()
-        return "You search and search, but there is nothing in this room to save you. The light, once bright, gradually goes dim, and after some amount of time you cannot comprehend, you sit opposite the skeleton, close your eyes, and succumb to sleep. <br><br> GAME OVER"
+        message = "You search and search, but there is nothing in this room to save you. The light, once bright, gradually goes dim, and after some amount of time you cannot comprehend, you sit opposite the skeleton, close your eyes, and succumb to sleep. <br><br> GAME OVER"
+        running = False
         # replay = input('Would you like to start over? Y or N ')
         # if replay.lower() == "y":
         #     player = Player(room['outside'], [])
@@ -432,7 +436,7 @@ while running:
                 ui_scene_text.kill()
                 ui_scene_text = pygame_gui.elements.UITextBox(adventure_output,
                                                               pygame.Rect((10, 10), (620, 300)),
-                                                              manager=ui_manager,
+                                                              manager=ui_manager,)
                                                               object_id="#scene_text")
     #             if active_scene.is_first_visit and entered_keys != 'help' and entered_keys != 'inventory':
     #                 ui_scene_text.set_active_effect("typing_appear")
