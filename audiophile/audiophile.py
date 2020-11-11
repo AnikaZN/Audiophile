@@ -229,6 +229,29 @@ pygame_gui.elements.UILabel(pygame.Rect((10, 320), (10, 19)),
 running = True
 clock = pygame.time.Clock()
 
+def item(player, item):
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            running = False
+
+        ui_manager.process_events(event)
+
+        if event.type == USEREVENT:
+            if event.user_type == "ui_text_entry_finished":
+                direction = event.text
+
+                if direction == 'take':
+                    player.inventory.append(item)
+                    message = f'You now have {player.inventory} in your inventory.'
+                    player.current_room.item_taken(item)
+                    return message, player
+                elif direction == 'ignore':
+                    message = 'You leave it there.'
+                    return message, player
+                else:
+                    message = 'There seems to have been an error. Please try again.'
+                    return message, player
+
 def gameplay(player, ghost, direction):
     ghost_room = ghost.current_room
 
@@ -336,7 +359,8 @@ def gameplay(player, ghost, direction):
         object = invest[14:-1]
 
         if invest != "There is nothing here.":
-            return invest, player, ghost
+            message = item(invest, player)
+            return message, player, ghost
         else:
             return invest, player, ghost
 
