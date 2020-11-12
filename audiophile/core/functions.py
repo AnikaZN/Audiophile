@@ -1,13 +1,13 @@
 import pygame
 
 from core.player import Player
+from core.room import room
 
 
 '''
 TO DO
-- Figure out "investigate room" and take items
-- Figure out inventory interaction
 - Terminate game when you hit the ghostie
+- Allow player/ghost collision
 - Implement replay option
 - Clean up aesthetics
 '''
@@ -142,14 +142,20 @@ def travel(player, ghost, direction):
 
 def investigate(player):
     invest = player.investigate()
-    object = invest[14:-1]
+    object = invest[10:-1]
 
-    if invest != "There is nothing here.":
+    if invest == "There is nothing here.":
         return invest
     else:
-        return invest
+        return take_item(player, object)
 
-def use(action, thing):
+def take_item(player, object):
+    player.inventory.append(object)
+    message = f'You now have {player.inventory} in your inventory.'
+    player.current_room.item_taken(object)
+    return message
+
+def use(player, action, thing):
     if thing == "hanger":
         if player.current_room.name == "Closet":
             player.inventory.remove(thing)
@@ -169,7 +175,7 @@ def use(action, thing):
     else:
         return f'The {thing} does not do anything here.'
 
-def drop(action, thing):
+def drop(player, action, thing):
     if thing in player.inventory:
         player.inventory.remove(thing)
         player.current_room.add_item(thing)
