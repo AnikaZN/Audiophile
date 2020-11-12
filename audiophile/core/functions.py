@@ -36,7 +36,7 @@ TO DO
 #                     message = 'There seems to have been an error. Please try again.'
 #                     return message, player, ghost
 
-def gameplay(player, ghost, direction):
+def travel(player, ghost, direction):
     ghost_room = ghost.current_room
 
     new_ghost_location = ghost_room.n_to
@@ -152,52 +152,39 @@ def gameplay(player, ghost, direction):
     #         return invest, player, ghost
 
     # elif direction == 'in':
-    #     if player.inventory != []:
-    #         print(f'You currently have {player.inventory} in your inventory.')
-    #         command = input('You can "drop" an item or "use" an item. Please name the item. (Example: "use pebble") ')
-    #         command = command.lower()
-    #         action, thing = command.split(' ')[0], ' '.join(command.split(' ')[1:])
-    #         if action == 'drop':
-    #             if thing in player.inventory:
-    #                 player.inventory.remove(thing)
-    #                 player.current_room.add_item(thing)
-    #                 print(f'You currently have {player.inventory} in your inventory.')
-    #             else:
-    #                 print('There seems to have been an error. Please try again.')
-    #         elif action == 'use':
-    #             if thing == "hanger":
-    #                 if player.current_room.name == "Closet":
-    #                     print('Unsure what is prompting you to do so, you run your hanger along the back wall of the closet. You have almost finished this odd scrape when it gets stuck - lodged into something. You wedge, twist, and tug, then with a sudden whoosh of machinery, a panel opens up in the wall. A bright light leaks through the hole that is now there.')
-    #                     player.inventory.remove(thing)
-    #                     player.current_room.add_item(thing)
-    #                     player.current_room = room['secret']
-    #                     print(player.room_info())
-    #                 else:
-    #                     print(f'The {thing} does not do anything here.')
-    #             elif thing == "key":
-    #                 if player.current_room.name == "Hidden Room":
-    #                     print('Through the fog of panic, you remember the key in your pocket. You pull it out, hands trembling, and shove it into a hole on the center of the panel. The door slides open again, and you scramble out, your chest tight.')
-    #                     player.inventory.remove(thing)
-    #                     player.current_room.add_item(thing)
-    #                     player.current_room = room['closet']
-    #                     print(player.room_info())
-    #                 else:
-    #                     print(f'The {thing} does not do anything here.')
-    #             else:
-    #                 print(f'The {thing} does not do anything here.')
-    #         else:
-    #             print('There seems to have been an error. Please try again.')
-    #     else:
-    #         print('You have nothing in your inventory.')
 
-    elif direction == 'h':
-        hint = "HINT: Find the key, the hidden room, the photograph, and the ghost - in that order. Do not get caught by the ghost until you have found all three things."
-        return hint, player, ghost
-
-    elif direction == 'q':
-        return 'Farewell!'
-        running = False
-
+def use(action, thing):
+    if thing == "hanger":
+        if player.current_room.name == "Closet":
+            player.inventory.remove(thing)
+            player.current_room.add_item(thing)
+            player.current_room = room['secret']
+            return 'Unsure what is prompting you to do so, you run your hanger along the back wall of the closet. You have almost finished this odd scrape when it gets stuck - lodged into something. You wedge, twist, and tug, then with a sudden whoosh of machinery, a panel opens up in the wall. A bright light leaks through the hole that is now there.'
+        else:
+            return f'The {thing} does not do anything here.'
+    elif thing == "key":
+        if player.current_room.name == "Hidden Room":
+            player.inventory.remove(thing)
+            player.current_room.add_item(thing)
+            player.current_room = room['closet']
+            return 'Through the fog of panic, you remember the key in your pocket. You pull it out, hands trembling, and shove it into a hole on the center of the panel. The door slides open again, and you scramble out, your chest tight.'
+        else:
+            return f'The {thing} does not do anything here.'
     else:
-        error = 'There seems to have been an error. Please try again.'
-        return error, player, ghost
+        return f'The {thing} does not do anything here.'
+
+def drop(action, thing):
+    if thing in player.inventory:
+        player.inventory.remove(thing)
+        player.current_room.add_item(thing)
+        return 'You currently have {player.inventory} in your inventory.'
+    else:
+        return 'There seems to have been an error. Please try again.'
+
+    # elif direction == 'q':
+    #     return 'Farewell!'
+    #     running = False
+    #
+    # else:
+    #     error = 'There seems to have been an error. Please try again.'
+    #     return error, player, ghost
