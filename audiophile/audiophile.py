@@ -7,7 +7,7 @@ import pygame_gui
 
 from core.player import Player
 from core.room import Room
-from core.functions import gameplay
+from core.functions import travel, use, drop
 
 # from core.functions import show_inventory, try_scene_change, examine_object
 # from core.functions import take_object, activate_object, combine_objects
@@ -213,22 +213,29 @@ def process_command(command):
     if command == "":
         output = player.room_info()
     elif command == "n" or command == "s" or command == "e" or command == "w":
-        message, player, ghost = travel(player, ghost, output)
-        output = message, player, ghost
+        message, player, ghost = travel(player, ghost, command)
+        output = message
     elif command == "h":
         hint = "HINT: Find the key, the hidden room, the photograph, and the ghost - in that order. Do not get caught by the ghost until you have found all three things."
-        output = hint, player, ghost
+        output = hint
+    elif command == "i":
+        pass
     elif command == "in":
         if player.inventory != []:
             output = f'You currently have {player.inventory} in your inventory.'
         else:
             output = 'You have nothing in your inventory.'
-    elif command.str.contains("use"):
+    elif "use" in command:
         action, thing = command.split(' ')[0], ' '.join(command.split(' ')[1:])
         output = use(action, thing)
-    elif command.str.contains("drop"):
+    elif "drop" in command:
         action, thing = command.split(' ')[0], ' '.join(command.split(' ')[1:])
         output = drop(action, thing)
+    elif command == "q":
+        running = False
+        return "Farewell!"
+    else:
+        output = "There seems to have been an error. Please try again."
 
     return output
 
@@ -274,7 +281,7 @@ while running:
                 adventure_output = process_command(direction)
                 ####################
                 ui_scene_text.kill()
-                ui_scene_text = pygame_gui.elements.UITextBox(adventure_output[0],
+                ui_scene_text = pygame_gui.elements.UITextBox(adventure_output,
                                                               pygame.Rect((10, 10), (620, 300)),
                                                               manager=ui_manager,
                                                               object_id="#scene_text")

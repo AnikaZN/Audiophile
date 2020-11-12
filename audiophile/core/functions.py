@@ -7,8 +7,6 @@ from core.player import Player
 TO DO
 - Figure out "investigate room" and take items
 - Figure out inventory interaction
-- Display warning message along with new room information
-- "Enter" key to close additional messages? (Hint/ghostie warning)
 - Terminate game when you hit the ghostie
 - Implement replay option
 - Clean up aesthetics
@@ -142,16 +140,14 @@ def travel(player, ghost, direction):
             message = 'There is nothing to the west. Please choose a different direction.'
             return message, player, ghost
 
-    # elif direction == 'i':
-    #     invest = player.investigate()
-    #     object = invest[14:-1]
-    #
-    #     if invest != "There is nothing here.":
-    #         return invest, item(player, ghost, object)
-    #     else:
-    #         return invest, player, ghost
+def investigate(player):
+    invest = player.investigate()
+    object = invest[14:-1]
 
-    # elif direction == 'in':
+    if invest != "There is nothing here.":
+        return invest
+    else:
+        return invest
 
 def use(action, thing):
     if thing == "hanger":
@@ -180,11 +176,3 @@ def drop(action, thing):
         return 'You currently have {player.inventory} in your inventory.'
     else:
         return 'There seems to have been an error. Please try again.'
-
-    # elif direction == 'q':
-    #     return 'Farewell!'
-    #     running = False
-    #
-    # else:
-    #     error = 'There seems to have been an error. Please try again.'
-    #     return error, player, ghost
