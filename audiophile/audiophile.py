@@ -9,15 +9,6 @@ from core.player import Player
 from core.room import Room, room
 from core.functions import travel, use, drop, investigate
 
-# from core.functions import show_inventory, try_scene_change, examine_object
-# from core.functions import take_object, activate_object, combine_objects
-# from core.core_strings import get_instructions
-# from core.setup import setup_starting_inventory
-# from core.snow import Snow
-# import scenes.scene_one as s1
-# import scenes.scene_two as s2
-# import scenes.scene_three as s3
-# import scenes.scene_four as s4
 
 # Put items in rooms
 room['outside'].add_item('pebble')
@@ -104,15 +95,6 @@ ui_manager.preload_fonts([{'name': 'agency', 'point_size': 18, 'style': 'regular
 # Will we need this?
 have_started = False
 
-# Not sure how these work yet
-# scenes = []
-# scene_1 = s1.SceneOne()
-# scenes.append(scene_1)
-# scenes.append(s2.SceneTwo())
-# scenes.append(s3.SceneThree())
-# scenes.append(s4.SceneFour())
-# active_scene = scene_1
-
 # Instantiate player and ghost
 player = Player(room['outside'])
 ghost = Player(room[random.choice(ghost_rooms)])
@@ -191,26 +173,18 @@ while running:
         if event.type == USEREVENT:
             if event.user_type == "ui_text_entry_finished":
                 direction = event.text
-                ####################
                 adventure_output = process_command(direction)
-                ####################
                 ui_scene_text.kill()
                 ui_scene_text = pygame_gui.elements.UITextBox(adventure_output,
                                                               pygame.Rect((10, 10), (620, 300)),
                                                               manager=ui_manager,
                                                               object_id="#scene_text")
-    #             if active_scene.is_first_visit and entered_keys != 'help' and entered_keys != 'inventory':
-    #                 ui_scene_text.set_active_effect("typing_appear")
                 player_text_entry.set_text("")
 
-    # active_scene.update(time_delta)
     ui_manager.update(time_delta)
-    # screen.blit(active_scene.background, (0, 0))  # draw the background
 
-    # active_scene.render_back(screen)
     ui_manager.draw_ui(screen)
-    # active_scene.render_front(screen)
 
-    pygame.display.flip()  # flip all our drawn stuff onto the screen
+    pygame.display.flip()
 
-pygame.quit()  # exited game loop so quit pygame
+pygame.quit()

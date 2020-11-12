@@ -11,28 +11,6 @@ TO DO
 - Implement replay option
 - Clean up aesthetics
 '''
-# def item(player, ghost, item):
-#     for event in pygame.event.get():
-#         if event.type == QUIT:
-#             running = False
-#
-#         ui_manager.process_events(event)
-#
-#         if event.type == USEREVENT:
-#             if event.user_type == "ui_text_entry_finished":
-#                 direction = event.text
-#
-#                 if direction == 'take':
-#                     player.inventory.append(item)
-#                     message = f'You now have {player.inventory} in your inventory.'
-#                     player.current_room.item_taken(item)
-#                     return message, player, ghost
-#                 elif direction == 'ignore':
-#                     message = 'You leave it there.'
-#                     return message, player, ghost
-#                 else:
-#                     message = 'There seems to have been an error. Please try again.'
-#                     return message, player, ghost
 
 def travel(player, ghost, direction):
     ghost_room = ghost.current_room
@@ -98,10 +76,6 @@ def travel(player, ghost, direction):
         #     print(welcome)
         # elif replay.lower() == "n":
         #     exit()
-
-    # direction = input('What would you like to do? (N to go north, S to go south, E to go east, W to go west, I to investigate the room, IN to interact with your inventory, H for a hint, Q to quit) ')
-    # direction = direction.lower()
-    # direction = commandLineSetup()
 
     if direction == 'n':
         location = player.current_room.n_to
