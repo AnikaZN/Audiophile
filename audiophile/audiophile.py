@@ -203,7 +203,7 @@ have_started = False
 player = Player(room['outside'])
 ghost = Player(room[random.choice(ghost_rooms)])
 
-def process_command(command, object1, object2):
+def process_command(command):
     global have_started
     global player
     global ghost
@@ -229,7 +229,7 @@ def process_command(command, object1, object2):
     elif command.str.contains("drop"):
         action, thing = command.split(' ')[0], ' '.join(command.split(' ')[1:])
         output = drop(action, thing)
-        
+
     return output
 
 adventure_output = ("<font face='agency' size=5>Audiophile: A Ghost-Hunting Adventure</font>"
@@ -271,10 +271,10 @@ while running:
             if event.user_type == "ui_text_entry_finished":
                 direction = event.text
                 ####################
-                # Insert function flow here
+                adventure_output = process_command(direction)
                 ####################
                 ui_scene_text.kill()
-                ui_scene_text = pygame_gui.elements.UITextBox(adventure_output,
+                ui_scene_text = pygame_gui.elements.UITextBox(adventure_output[0],
                                                               pygame.Rect((10, 10), (620, 300)),
                                                               manager=ui_manager,
                                                               object_id="#scene_text")
