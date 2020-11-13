@@ -2,7 +2,7 @@ import pygame
 import random
 
 from core.player import Player
-from core.room import room
+from core.room import room, ghost_rooms
 
 
 '''

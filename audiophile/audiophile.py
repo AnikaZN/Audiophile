@@ -6,7 +6,7 @@ from pygame.locals import *
 import pygame_gui
 
 from core.player import Player
-from core.room import Room, room
+from core.room import Room, room, ghost_rooms
 from core.functions import ghost_checks, travel, use, drop, investigate, restart
 
 
@@ -69,10 +69,6 @@ room['ehall2'].w_to = room['ehall']
 room['bath'].n_to = room['ehall2']
 room['bedroom'].n_to = room['ehall']
 
-ghost_rooms = ['living', 'piano', 'dining', 'kitchen', 'nursery', 'laundry',
-               'bedroom', 'bath', 'pbath', 'primary', 'closet', 'vacant',
-               'linen']
-
 pygame.init()
 pygame.mixer.music.load('./data/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
 # pygame.mixer.music.play()
@@ -110,7 +106,7 @@ def process_command(command):
         output = player.room_info()
     elif command == "n" or command == "s" or command == "e" or command == "w":
         message = ghost_checks(player, ghost, command)
-        if "CONGRATULATIONS" in message or "GAME OVER" in message:
+        if "CONGRATULATIONS" in message or "GAME OVER" in messagw:
             output = message
         elif message == "Nothing to report":
             info, player, ghost = travel(player, ghost, command)

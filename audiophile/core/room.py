@@ -79,3 +79,7 @@ room = {
     'bath':     Room("Bathroom",
                      """Here, the smell of mold. The porcelain tub is halfway full of brown water. What would you like to do? (N to go north, S to go south, E to go east, W to go west, I to investigate the room, IN to view your inventory, USE to use an item, DROP to drop an item, H for a hint, Q to quit)"""),
 }
+
+ghost_rooms = ['living', 'piano', 'dining', 'kitchen', 'nursery', 'laundry',
+               'bedroom', 'bath', 'pbath', 'primary', 'closet', 'vacant',
+               'linen']
