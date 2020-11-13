@@ -5,6 +5,7 @@ import random
 import os
 import pygame
 import argparse
+import time
 
 # Declare all the rooms
 room = {
