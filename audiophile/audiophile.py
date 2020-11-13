@@ -7,7 +7,7 @@ import pygame_gui
 
 from core.player import Player
 from core.room import Room, room
-from core.functions import travel, use, drop, investigate
+from core.functions import ghost_checks, travel, use, drop, investigate, restart
 
 
 # Put items in rooms
@@ -75,7 +75,7 @@ ghost_rooms = ['living', 'piano', 'dining', 'kitchen', 'nursery', 'laundry',
 
 pygame.init()
 pygame.mixer.music.load('./data/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
-pygame.mixer.music.play()
+# pygame.mixer.music.play()
 
 # What does this do?
 os.environ['SDL_VIDEO_CENTERED'] = '1'
@@ -109,8 +109,12 @@ def process_command(command):
     if command == "":
         output = player.room_info()
     elif command == "n" or command == "s" or command == "e" or command == "w":
-        message, player, ghost = travel(player, ghost, command)
-        output = message
+        message = ghost_checks(player, ghost, command)
+        if message == "Nothing to report":
+            info, player, ghost = travel(player, ghost, command)
+            output = info
+        else:
+            output = message
     elif command == "h":
         hint = "HINT: Find the key, the hidden room, the photograph, and the ghost - in that order. Do not get caught by the ghost until you have found all three things."
         output = hint
@@ -121,6 +125,11 @@ def process_command(command):
             output = f'You currently have {player.inventory} in your inventory.'
         else:
             output = 'You have nothing in your inventory.'
+    elif command == "yes":
+        restart()
+    elif command == "no":
+        running = False
+        output = "Farewell!"
     elif "use" in command:
         action, thing = command.split(' ')[0], ' '.join(command.split(' ')[1:])
         output = use(player, action, thing)
@@ -129,7 +138,7 @@ def process_command(command):
         output = drop(player, action, thing)
     elif command == "q":
         running = False
-        return "Farewell!"
+        output = "Farewell!"
     else:
         output = "There seems to have been an error. Please try again."
 
