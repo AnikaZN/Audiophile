@@ -14,8 +14,8 @@ flask-sqlalchemy = "*"
 playsound = "*"
 pygame = "*"
 dash = "*"
-pyinstaller = "*"
 pygame-gui = "*"
+pyinstaller = "*"
 
 [requires]
 python_version = "3.7"

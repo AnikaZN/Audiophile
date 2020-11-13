@@ -195,8 +195,11 @@ while running:
 
     pygame.display.flip()
 
-    if "CONGRATULATIONS" in adventure_output or "Farewell" in adventure_output:
-        time.sleep(60)
+    if "CONGRATULATIONS" in adventure_output:
+        time.sleep(45)
+        running = False
+    if "Farewell" in adventure_output:
+        time.sleep(5)
         running = False
 
 pygame.quit()

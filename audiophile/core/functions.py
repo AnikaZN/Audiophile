@@ -38,7 +38,7 @@ def ghost_checks(player, ghost, direction):
         pygame.mixer.music.play()
         message = "You feel an intense cold, and your muscles lock into place. You hear a scream, feel a pain deep in your body as if you have been stabbed, and the world goes dark as you collapse to the floor. GAME OVER -- Would you like to try again? Please type 'yes' or 'no'"
         return message
-    elif "Primary Bedroom" == player.current_room.name and "crumpled photo" in player.inventory:
+    elif player.current_room.name == "Primary Bedroom" and "crumpled photo" in player.inventory:
         pygame.mixer.music.load('./data/2018-07-02_-_Tears_of_Joy_-_David_Fesliyan.mp3')
         pygame.mixer.music.play()
         message = "You feel an intense cold, and your muscles lock into place. The sound of a scream shreds through your ears, and then the room grows impossibly silent. You are still frozen in place, but feel the crumpled photo in your pocket shift. Before your eyes, it unfolds in midair, and suddenly the foggy silhouette of a man stands before you. His eyes are sad, but he is smiling just a bit. 'Thank you' - the words echo through your head. The ghost disappears. You crumple to the floor, and watch in awe as the room around you grows brighter, as though the sun has come up. The cold leaves your body, and you know, with absolute certainty, that all is well. CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME"
