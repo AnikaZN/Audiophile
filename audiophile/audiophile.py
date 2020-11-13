@@ -70,7 +70,7 @@ room['bedroom'].n_to = room['ehall']
 
 pygame.init()
 pygame.mixer.music.load('./data/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
-# pygame.mixer.music.play()
+pygame.mixer.music.play()
 
 # What does this do?
 os.environ['SDL_VIDEO_CENTERED'] = '1'
