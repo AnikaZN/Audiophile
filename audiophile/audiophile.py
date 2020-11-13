@@ -110,11 +110,14 @@ def process_command(command):
         output = player.room_info()
     elif command == "n" or command == "s" or command == "e" or command == "w":
         message = ghost_checks(player, ghost, command)
-        if message == "Nothing to report":
+        if "CONGRATULATIONS" in message or "GAME OVER" in message:
+            output = message
+        elif message == "Nothing to report":
             info, player, ghost = travel(player, ghost, command)
             output = info
         else:
-            output = message
+            info, player, ghost = travel(player, ghost, command)
+            output = message + " --- " + info
     elif command == "h":
         hint = "HINT: Find the key, the hidden room, the photograph, and the ghost - in that order. Do not get caught by the ghost until you have found all three things."
         output = hint

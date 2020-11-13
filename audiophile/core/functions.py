@@ -1,4 +1,5 @@
 import pygame
+import random
 
 from core.player import Player
 from core.room import room
@@ -6,8 +7,6 @@ from core.room import room
 
 '''
 TO DO
-- Terminate game when you hit the ghostie
-- Allow player/ghost collision
 - Implement replay option
 - Fix closet <--> secret room navigation
 - Clean up aesthetics
