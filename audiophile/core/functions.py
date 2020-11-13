@@ -7,6 +7,8 @@ from core.room import room, ghost_rooms
 
 '''
 TO DO
+- "Item not in list" doesn't crash game
+- Clear inventory on restart
 - Clean up aesthetics
 - Code commenting
 '''
@@ -138,7 +140,7 @@ def drop(player, action, thing):
         return 'There seems to have been an error. Please try again.'
 
 def restart():
-    player = Player(room['outside'], [])
+    player = Player(room['outside'], ['vial of blood'])
     ghost = Player(room[random.choice(ghost_rooms)])
     pygame.mixer.music.load('./data/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
     pygame.mixer.music.play()
