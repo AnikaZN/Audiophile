@@ -43,3 +43,37 @@
 ├─── Pipfile.lock
 └─── README.md
 ```
+
+## How to Play
+
+### Terminal Only:
+
+- Clone repo
+
+- `cd audiophile`
+
+- `pipenv shell`
+
+- `pipenv install`
+
+- `cd terminal_game/src`
+
+- `python playable.py`
+
+- Have fun!
+
+### PyGame Version:
+
+- Clone repo
+
+- `cd audiophile`
+
+- `pipenv shell`
+
+- `pipenv install`
+
+- `cd audiophile`
+
+- `python audiophile.py`
+
+- Have fun!
