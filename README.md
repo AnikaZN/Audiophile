@@ -8,7 +8,7 @@
 │   │   ├─── functions.py: Contains all functionality for gameplay
 │   │   ├─── item.py: Contains the Item class
 │   │   ├─── player.py: Contains the Player class
-│   │   ├─── room.py: Contains the Room class, dictionary of all rooms, and ghost_rooms list
+│   │   └─── room.py: Contains the Room class, dictionary of all rooms, and ghost_rooms list
 │   │   
 │   ├─── data
 │   │   ├─── 2018-07-02_-_Tears_of_Joy_-_David_Fesliyan.mp3: Victory theme
