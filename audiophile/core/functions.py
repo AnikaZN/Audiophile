@@ -8,6 +8,7 @@ from core.room import room, ghost_rooms
 '''
 TO DO
 - "Item not in list" doesn't crash game
+- Make music loop
 - Clear inventory on restart
 - Clean up aesthetics
 - Code commenting
