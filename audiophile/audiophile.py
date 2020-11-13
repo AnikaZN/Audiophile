@@ -106,7 +106,7 @@ def process_command(command):
         output = player.room_info()
     elif command == "n" or command == "s" or command == "e" or command == "w":
         message = ghost_checks(player, ghost, command)
-        if "CONGRATULATIONS" in message or "GAME OVER" in messagw:
+        if "CONGRATULATIONS" in message or "GAME OVER" in message:
             output = message
         elif message == "Nothing to report":
             info, player, ghost = travel(player, ghost, command)

@@ -146,6 +146,6 @@ def drop(player, action, thing):
 def restart():
     player = Player(room['outside'])
     ghost = Player(room[random.choice(ghost_rooms)])
-    pygame.mixer.music.load('../sound_effects/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
+    pygame.mixer.music.load('../data/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
     # pygame.mixer.music.play()
     return player, ghost
