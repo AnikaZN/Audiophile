@@ -8,6 +8,7 @@ from core.room import room, ghost_rooms
 '''
 TO DO
 - Clean up aesthetics
+- Code commenting
 '''
 
 def ghost_checks(player, ghost, direction):
