@@ -214,7 +214,7 @@ while True:
         print("CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME.")
         replay = input('Would you like to start over? Y or N ')
         if replay.lower() == "y":
-            player = Player(room['outside'])
+            player = Player(room['outside'], [])
             ghost = Player(room[random.choice(ghost_rooms)])
             welcome = (f'Welcome! Your current location is: {player.room_info()}')
             print(welcome)

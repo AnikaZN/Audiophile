@@ -1,5 +1,6 @@
 import os
 import random
+import time
 
 import pygame
 from pygame.locals import *
@@ -58,8 +59,6 @@ room['primary'].w_to = room['closet']
 room['primary'].e_to = room['pbath']
 room['primary'].s_to = room['stairs']
 room['closet'].e_to = room['primary']
-room['closet'].w_to = room['secret']
-room['secret'].e_to = room['closet']
 room['pbath'].w_to = room['primary']
 room['ehall'].e_to = room['ehall2']
 room['ehall'].s_to = room['bedroom']
@@ -106,7 +105,9 @@ def process_command(command):
         output = player.room_info()
     elif command == "n" or command == "s" or command == "e" or command == "w":
         message = ghost_checks(player, ghost, command)
-        if "CONGRATULATIONS" in message or "GAME OVER" in message:
+        if "CONGRATULATIONS" in message:
+            output = message
+        elif "GAME OVER" in message:
             output = message
         elif message == "Nothing to report":
             info, player, ghost = travel(player, ghost, command)
@@ -125,7 +126,7 @@ def process_command(command):
         else:
             output = 'You have nothing in your inventory.'
     elif command == "yes":
-        restart()
+        output, player, ghost = restart()
     elif command == "no":
         running = False
         output = "Farewell!"
@@ -137,7 +138,6 @@ def process_command(command):
         output = drop(player, action, thing)
     elif command == "q":
         running = False
-        output = "Farewell!"
     else:
         output = "There seems to have been an error. Please try again."
 
@@ -194,5 +194,9 @@ while running:
     ui_manager.draw_ui(screen)
 
     pygame.display.flip()
+
+    if "CONGRATULATIONS" in adventure_output or "Farewell" in adventure_output:
+        time.sleep(60)
+        running = False
 
 pygame.quit()

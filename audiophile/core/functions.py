@@ -7,8 +7,6 @@ from core.room import room, ghost_rooms
 
 '''
 TO DO
-- Implement replay option
-- Fix closet <--> secret room navigation
 - Clean up aesthetics
 '''
 
@@ -33,31 +31,26 @@ def ghost_checks(player, ghost, direction):
     if ghost_room.n_to == player.current_room or ghost_room.s_to == player.current_room or ghost_room.w_to == player.current_room or ghost_room.e_to == player.current_room:
         pygame.mixer.music.load('./data/2020-06-25_-_Dark_Shadows_-_www.FesliyanStudios.com_David_Fesliyan.mp3')
         # pygame.mixer.music.play()
-        print('A')
         message = "You feel a strange chill... Be cautious. Something is near."
         return message
     elif ghost_room == player.current_room and "crumpled photo" not in player.inventory:
         pygame.mixer.music.load('./data/2020-02-16_-_Anxiety_-_David_Fesliyan.mp3')
         # pygame.mixer.music.play()
-        print('B')
         message = "You feel an intense cold, and your muscles lock into place. You hear a scream, feel a pain deep in your body as if you have been stabbed, and the world goes dark as you collapse to the floor. GAME OVER -- Would you like to try again? Please type 'yes' or 'no'"
         return message
-    elif ghost_room == player.current_room and "crumpled photo" in player.inventory:
+    elif "Primary Bedroom" == player.current_room.name and "crumpled photo" in player.inventory:
         pygame.mixer.music.load('./data/2018-07-02_-_Tears_of_Joy_-_David_Fesliyan.mp3')
         # pygame.mixer.music.play()
-        message = "You feel an intense cold, and your muscles lock into place. The sound of a scream shreds through your ears, and then the room grows impossibly silent. You are still frozen in place, but feel the crumpled photo in your pocket shift. Before your eyes, it unfolds in midair, and suddenly the foggy silhouette of a man stands before you. His eyes are sad, but he is smiling just a bit. 'Thank you' - the words echo through your head. The ghost disappears. You crumple to the floor, and watch in awe as the room around you grows brighter, as though the sun has come up. The cold leaves your body, and you know, with absolute certainty, that all is well. CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME -- Would you like to try again? Please type 'yes' or 'no'"
-        print('C')
+        message = "You feel an intense cold, and your muscles lock into place. The sound of a scream shreds through your ears, and then the room grows impossibly silent. You are still frozen in place, but feel the crumpled photo in your pocket shift. Before your eyes, it unfolds in midair, and suddenly the foggy silhouette of a man stands before you. His eyes are sad, but he is smiling just a bit. 'Thank you' - the words echo through your head. The ghost disappears. You crumple to the floor, and watch in awe as the room around you grows brighter, as though the sun has come up. The cold leaves your body, and you know, with absolute certainty, that all is well. CONGRATULATIONS. YOU FREED THE GHOST, AND WON THE GAME"
         return message
 
     if player.current_room.name == "Closet" and "hanger" not in player.inventory and direction == "w":
         message = "The closet wall seems to be hollow in areas... Perhaps a tool would help."
-        print('D')
         return message
     if player.current_room.name == "Hidden Room" and "key" not in player.inventory:
         pygame.mixer.music.load('./data/2020-02-16_-_Anxiety_-_David_Fesliyan.mp3')
         # pygame.mixer.music.play()
         message = "You search and search, but there is nothing in this room to save you. The light, once bright, gradually goes dim, and after some amount of time you cannot comprehend, you sit opposite the skeleton, close your eyes, and succumb to sleep. GAME OVER -- Would you like to try again? Please type 'yes' or 'no'"
-        print('E')
         return message
 
     return "Nothing to report"
@@ -144,8 +137,9 @@ def drop(player, action, thing):
         return 'There seems to have been an error. Please try again.'
 
 def restart():
-    player = Player(room['outside'])
+    player = Player(room['outside'], [])
     ghost = Player(room[random.choice(ghost_rooms)])
-    pygame.mixer.music.load('../data/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
+    pygame.mixer.music.load('./data/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
     # pygame.mixer.music.play()
-    return player, ghost
+    message = "You stand outside a simple, two-story house. Will you open the door?"
+    return message, player, ghost
