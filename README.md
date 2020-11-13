@@ -51,6 +51,8 @@ scratchpad
 
 terminal_game
 
+  |
+
   --- sound_effects: Same audio clips from audiophile/data
 
   --- src
