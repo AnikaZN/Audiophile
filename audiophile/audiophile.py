@@ -153,7 +153,7 @@ adventure_output = ("<font face='agency' size=5>Audiophile: A Ghost-Hunting Adve
 entered_keys = ""
 
 ui_scene_text = pygame_gui.elements.UITextBox(adventure_output,
-                                              pygame.Rect((10, 10), (620, 300)),
+                                              pygame.Rect((10, 10), (620, 200)),
                                               manager=ui_manager,
                                               object_id="#scene_text")
 ui_scene_text.set_active_effect("typing_appear")
@@ -190,6 +190,7 @@ while running:
                 player_text_entry.set_text("")
 
     ui_manager.update(time_delta)
+    screen.blit(player.current_room.background, (0, 0))
 
     ui_manager.draw_ui(screen)
 

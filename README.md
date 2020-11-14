@@ -15,9 +15,27 @@
 │   │   ├─── 2020-02-16_-_Anxiety_-_David_Fesliyan.mp3: Death theme
 │   │   ├─── 2020-06-25_-_Dark_Shadows_-_www.FesliyanStudios.com_David_Fesliyan.mp3: Warning theme
 │   │   ├─── AGENCYB.TTF: Font
+│   │   ├─── bathroom.jpg: Photo by David Babayan on Unsplash
+│   │   ├─── bedroom.jpg: Photo by Riccardo Retez on Unsplash
+│   │   ├─── closet.jpg: Photo by Julija V. on Unsplash
+│   │   ├─── dining.jpg: Photo by Daniela on Unsplash
+│   │   ├─── foyer.jpg: Photo by Kirk Lai on Unsplash
 │   │   ├─── Gabriola.TTF: Font
+│   │   ├─── hallway.jpg: Photo by Echo Grid on Unsplash
+│   │   ├─── house.jpg: Photo by Matthew T Rader on Unsplash
+│   │   ├─── laundry.jpg: Photo by Pau Casals on Unsplash
+│   │   ├─── linen.jpg: Photo by Zane Lee on Unsplash
+│   │   ├─── living.jpg: Photo by Morgan Vander Hart on Unsplash
 │   │   ├─── MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3: General theme
+│   │   ├─── pbath.jpg: Photo by Quinton Coetzee on Unsplash
+│   │   ├─── piano.jpg: Photo by Richard Ludwig on Unsplash
+│   │   ├─── primary.jpg: Photo by Bianca Capeloti on Unsplash
+│   │   ├─── nursery.jpg: Photo by freestocks on Unsplash
+│   │   ├─── secret.jpg: Photo by Katherine Kromberg on Unsplash
+│   │   ├─── stairs.jpg: Photo by Dima Pechurin on Unsplash
 │   │   └─── ui_theme.json: Design details
+│   │   ├─── vacant.jpg: Photo by bill wegener on Unsplash
+│   │   ├─── wall.jpg: Photo by Adi Goldstein on Unsplash
 │   │
 │   ├─── audiophile.py: Core file for gameplay
 │   └─── christmas_adventure_notes.txt: Notes on reference repository
