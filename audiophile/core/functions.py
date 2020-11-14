@@ -8,7 +8,6 @@ from core.room import room, ghost_rooms
 '''
 TO DO
 - Clear inventory on restart
-- Code commenting
 '''
 
 # See if there is a ghost collision
