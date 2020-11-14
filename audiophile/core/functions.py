@@ -140,8 +140,8 @@ def drop(player, action, thing):
     else:
         return 'There seems to have been an error. Please try again.'
 
-def restart():
-    player = Player(room['outside'], ['vial of blood'])
+def restart(player):
+    player.current_room = room['outside']
     ghost = Player(room[random.choice(ghost_rooms)])
     pygame.mixer.music.load('./data/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3')
     pygame.mixer.music.play(loops=-1)

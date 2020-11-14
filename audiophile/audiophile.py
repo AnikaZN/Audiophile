@@ -126,7 +126,7 @@ def process_command(command):
         else:
             output = 'You have nothing in your inventory.'
     elif command == "yes":
-        output, player, ghost = restart()
+        output, player, ghost = restart(player)
     elif command == "no":
         output = "Farewell!"
     elif "use" in command:

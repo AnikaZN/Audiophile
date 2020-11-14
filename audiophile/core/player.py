@@ -18,3 +18,6 @@ class Player():
             return f'You see a {item}.'
         else:
             return "There is nothing here."
+
+    def remove_inventory(self):
+        self.inventory = []
