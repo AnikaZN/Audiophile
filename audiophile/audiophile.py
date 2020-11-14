@@ -128,7 +128,6 @@ def process_command(command):
     elif command == "yes":
         output, player, ghost = restart()
     elif command == "no":
-        running = False
         output = "Farewell!"
     elif "use" in command:
         action, thing = command.split(' ')[0], ' '.join(command.split(' ')[1:])
@@ -137,7 +136,7 @@ def process_command(command):
         action, thing = command.split(' ')[0], ' '.join(command.split(' ')[1:])
         output = drop(player, action, thing)
     elif command == "q":
-        running = False
+        output = "Farewell!"
     else:
         output = "There seems to have been an error. Please try again."
 
