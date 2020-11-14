@@ -157,10 +157,10 @@ ui_scene_text = pygame_gui.elements.UITextBox(adventure_output,
                                               manager=ui_manager,
                                               object_id="#scene_text")
 ui_scene_text.set_active_effect("typing_appear")
-player_text_entry = pygame_gui.elements.UITextEntryLine(pygame.Rect((20, 320), (600, 19)),
+player_text_entry = pygame_gui.elements.UITextEntryLine(pygame.Rect((20, 420), (600, 19)),
                                                         manager=ui_manager,
                                                         object_id="#player_input")
-pygame_gui.elements.UILabel(pygame.Rect((10, 320), (10, 19)),
+pygame_gui.elements.UILabel(pygame.Rect((10, 420), (10, 19)),
                             ">",
                             manager=ui_manager,
                             object_id="#carat")
@@ -184,7 +184,7 @@ while running:
                 adventure_output = process_command(direction)
                 ui_scene_text.kill()
                 ui_scene_text = pygame_gui.elements.UITextBox(adventure_output,
-                                                              pygame.Rect((10, 10), (620, 300)),
+                                                              pygame.Rect((10, 10), (620, 200)),
                                                               manager=ui_manager,
                                                               object_id="#scene_text")
                 player_text_entry.set_text("")
