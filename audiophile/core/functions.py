@@ -8,6 +8,7 @@ from core.room import room, ghost_rooms
 '''
 TO DO
 - Clear inventory on restart
+- Implement a map (backup: breadcrumbs "this is what you've typed")
 '''
 
 # See if there is a ghost collision
@@ -54,7 +55,7 @@ def ghost_checks(player, ghost, direction):
         return message
 
     # Secret room hint in closet
-    if player.current_room.name == "Closet" and "hanger" not in player.inventory and direction == "w":
+    if player.current_room.name == "Closet" and direction == "w":
         message = "The closet wall seems to be hollow in areas... Perhaps a tool would help."
         return message
     # Player death if they enter secret room without key
