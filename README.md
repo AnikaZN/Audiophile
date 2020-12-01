@@ -33,9 +33,9 @@
 │   │   ├─── nursery.jpg: Photo by freestocks on Unsplash
 │   │   ├─── secret.jpg: Photo by Katherine Kromberg on Unsplash
 │   │   ├─── stairs.jpg: Photo by Dima Pechurin on Unsplash
-│   │   └─── ui_theme.json: Design details
+│   │   ├─── ui_theme.json: Design details
 │   │   ├─── vacant.jpg: Photo by bill wegener on Unsplash
-│   │   ├─── wall.jpg: Photo by Adi Goldstein on Unsplash
+│   │   └─── wall.jpg: Photo by Adi Goldstein on Unsplash
 │   │
 │   ├─── audiophile.py: Core file for gameplay
 │   └─── christmas_adventure_notes.txt: Notes on reference repository
@@ -48,7 +48,7 @@
 |
 ├─── terminal_game
 │   ├── sound_effects: Same audio clips from audiophile/data
-│   └── src
+│   ├─── src
 │   │   ├─── adv.py: While-loop-based version of the game. Not fully playable.
 │   │   ├─── item.py: Contains the Item class
 │   │   ├─── playable.py: While-loop-based version of the game. Fully playable.
